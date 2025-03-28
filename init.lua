@@ -2,6 +2,7 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
+vim.g.mapleader = " "
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -26,6 +27,9 @@ local plugins = {
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+  {
+    "nvim-treesitter/nvim-treesitter", build={":TSUpdate"}
   }
 }
 
@@ -36,8 +40,15 @@ require("lazy").setup(plugins, opt)
 local builtin = require("telescope.builtin")
 -- use fuzzy find to find variables within the project
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 
 require("catppuccin").setup()
 vim.cmd.colorscheme "catppuccin"
 
+local config = require("nvim-treesitter.configs")
+config.setup({
+  ensure_installed = { "lua", "javascript", "vim", "c", "cpp", "python" },  
+  indent = { enabled = true },
+  highlight = { indent = true },
+})
 
