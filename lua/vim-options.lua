@@ -15,3 +15,8 @@ vim.opt.makeprg = "cmake --build build"
 vim.api.nvim_create_user_command("CMakeGenerate", "!cmake -S . -B build", {})
 vim.api.nvim_create_user_command("CMakeBuild", "!cmake --build build", {})
 vim.api.nvim_create_user_command("CMakeRun", "!./build/myapp", {})
+
+vim.api.nvim_set_keymap('n', ',cc', '<Plug>NERDCommenterToggle', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', ',cc', '<Plug>NERDCommenterComment', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', ',cu', '<Plug>NERDCommenterUncomment', { noremap = true, silent = true })
+
