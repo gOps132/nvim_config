@@ -18,6 +18,14 @@ return {
         local utils = require("utils.copy_folder")
 
         require("neo-tree").setup({
+            filesystem = {
+                filtered_items = {
+                    visible = true,         -- Show hidden files by default
+                    show_hidden_count = true,
+                    hide_dotfiles = false,  -- Show dotfiles (like .git, .env)
+                    hide_gitignored = false, -- Show files ignored by .gitignore
+                },
+            },
             window = {
                 mappings = {
                     ["C"] = function(state)
