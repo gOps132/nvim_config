@@ -9,7 +9,7 @@ return {
     "williamboman/mason-lspconfig.nvim", 
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd", "jdtls" } -- Add clangd for C++
+        ensure_installed = { "lua_ls", "clangd", "jdtls", "tsserver" } -- Add clangd for C++
       })
     end
   },
